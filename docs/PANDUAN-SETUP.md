@@ -8,6 +8,11 @@ Panduan ini berisi langkah setelah website online agar **hilmimokhsen.com** cepa
 
 ## 0. Pastikan website sudah online
 
+> **Status saat ini (7 Oktober 2026):** website sudah online di GitHub Pages: <https://ihsanmokhsen.github.io/hilmimokhsen.com/>. Domain **hilmimokhsen.com belum terdaftar**, jadi beli dulu domainnya (Niagahoster, Domainesia, Rumahweb, Cloudflare Registrar, dll.), lalu pasang ke GitHub Pages:
+> 1. Di pengelola DNS domain, tambahkan 4 record `A` untuk `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, dan 1 record `CNAME` untuk `www` → `ihsanmokhsen.github.io`.
+> 2. Repo *Settings → Pages → Custom domain* → isi `hilmimokhsen.com` → *Save* → tunggu cek DNS hijau → centang *Enforce HTTPS*.
+> 3. Baru setelah itu lanjut ke langkah 1 (Search Console). **Jangan daftarkan alamat github.io ke Search Console.** Halaman ini sudah menunjuk `hilmimokhsen.com` sebagai alamat resmi (canonical).
+
 - [ ] Website dapat dibuka di `https://hilmimokhsen.com` (pakai **https**, bukan http).
 - [ ] `https://www.hilmimokhsen.com` otomatis dialihkan ke `https://hilmimokhsen.com` (atau sebaliknya, asal konsisten). Situs ini memakai alamat **tanpa www** di canonical, sitemap, dan data terstruktur.
 - [ ] File berikut bisa dibuka:
