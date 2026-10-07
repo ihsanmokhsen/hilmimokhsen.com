@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://hilmimokhsen.com/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://hilmimokhsen.com/assets/hilmi-mokhsen-kupang.jpg</image:loc></image:image>
+    <image:image><image:loc>https://hilmimokhsen.com/assets/hilmi-mokhsen-public-speaking.jpg</image:loc></image:image>
+    <image:image><image:loc>https://hilmimokhsen.com/assets/hilmi-mokhsen-pendidikan.jpg</image:loc></image:image>
+    <image:image><image:loc>https://hilmimokhsen.com/assets/hilmi-mokhsen-pengembangan-diri.jpg</image:loc></image:image>
+    <image:image><image:loc>https://hilmimokhsen.com/assets/hilmi-mokhsen-lifestyle.jpg</image:loc></image:image>
+  </url>
+</urlset>

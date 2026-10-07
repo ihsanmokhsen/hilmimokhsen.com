@@ -1,0 +1,36 @@
+# hilmimokhsen.com — terbuka untuk mesin pencari & AI agent
+User-agent: *
+Allow: /
+
+# Mesin pencari
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: DuckDuckBot
+Allow: /
+
+# AI — OpenAI (ChatGPT)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+Allow: /
+
+# AI — Anthropic (Claude)
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+Allow: /
+
+# AI — Google, Perplexity, Apple, Meta, Amazon, DuckDuckGo, Mistral, Common Crawl
+User-agent: Google-Extended
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: Amazonbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://hilmimokhsen.com/sitemap.xml
