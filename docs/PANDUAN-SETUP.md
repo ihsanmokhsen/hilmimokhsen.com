@@ -8,26 +8,21 @@ Panduan ini berisi langkah setelah website online agar **hilmimokhsen.my.id** ce
 
 ## 0. Pastikan website sudah online
 
-> **Status saat ini (8 Oktober 2026):** website online di GitHub Pages: <https://ihsanmokhsen.github.io/hilmimokhsen.com/>. Domain **hilmimokhsen.my.id** sudah dibeli (registrar PT Exabytes Network Indonesia, name server `ns1.sumopod.com` / `ns2.sumopod.com`) tapi DNS-nya belum diisi. Pasang ke GitHub Pages:
+> **Status (8 Oktober 2026): ✅ langkah 0 selesai.** Website online di **https://hilmimokhsen.my.id/** (GitHub Pages + custom domain, sertifikat HTTPS Let's Encrypt, *Enforce HTTPS* aktif). Domain dibeli di Sumopod (registrar PT Exabytes Network Indonesia, name server `ns1/ns2.sumopod.com`) dengan record DNS berikut, jangan diubah:
 >
-> 1. **Isi DNS di panel Sumopod** (menu DNS / Zone untuk `hilmimokhsen.my.id`):
+> | Type | Name / Host | Value / Target | TTL |
+> |---|---|---|---|
+> | A | `@` | `185.199.108.153` | 3600 |
+> | A | `@` | `185.199.109.153` | 3600 |
+> | A | `@` | `185.199.110.153` | 3600 |
+> | A | `@` | `185.199.111.153` | 3600 |
+> | CNAME | `www` | `ihsanmokhsen.github.io` | 3600 |
 >
->    | Type | Name / Host | Value / Target | TTL |
->    |---|---|---|---|
->    | A | `@` | `185.199.108.153` | 3600 |
->    | A | `@` | `185.199.109.153` | 3600 |
->    | A | `@` | `185.199.110.153` | 3600 |
->    | A | `@` | `185.199.111.153` | 3600 |
->    | CNAME | `www` | `ihsanmokhsen.github.io` | 3600 |
->
->    Hapus record `A`/`CNAME` bawaan lain untuk `@` dan `www` (misalnya parkir domain) supaya tidak bentrok. Domain `.my.id` yang baru dibeli bisa butuh beberapa jam sampai 1×24 jam sampai DNS-nya aktif.
-> 2. **Cek DNS sudah aktif:** `dig +short hilmimokhsen.my.id` harus menampilkan keempat IP `185.199.x.153` di atas.
-> 3. **Pasang custom domain di GitHub:** repo *Settings → Pages → Custom domain* → isi `hilmimokhsen.my.id` → *Save* (ini membuat file `CNAME` di repo) → tunggu cek DNS hijau → centang *Enforce HTTPS* (sertifikat bisa butuh hingga ±1 jam). Jangan lakukan langkah ini sebelum langkah 2 berhasil: begitu custom domain dipasang, alamat github.io langsung dialihkan ke domain, sehingga situs tidak bisa dibuka selama DNS belum aktif.
-> 4. Baru setelah itu lanjut ke langkah 1 (Search Console). **Jangan daftarkan alamat github.io ke Search Console.** Semua canonical, sitemap, dan data terstruktur sudah menunjuk `https://hilmimokhsen.my.id/`.
+> `www.hilmimokhsen.my.id`, `http://`, dan alamat lama `ihsanmokhsen.github.io/hilmimokhsen.com/` semuanya dialihkan (301) ke `https://hilmimokhsen.my.id/`. File `CNAME` di repo menyimpan pengaturan domain ini, jadi jangan dihapus. **Domain berlaku sampai 7 Oktober 2027**: perpanjang sebelum tanggal itu. Lanjut ke langkah 1.
 
-- [ ] Website dapat dibuka di `https://hilmimokhsen.my.id` (pakai **https**, bukan http).
-- [ ] `https://www.hilmimokhsen.my.id` otomatis dialihkan ke `https://hilmimokhsen.my.id` (atau sebaliknya, asal konsisten). Situs ini memakai alamat **tanpa www** di canonical, sitemap, dan data terstruktur.
-- [ ] File berikut bisa dibuka:
+- [x] Website dapat dibuka di `https://hilmimokhsen.my.id` (pakai **https**, bukan http).
+- [x] `https://www.hilmimokhsen.my.id` otomatis dialihkan ke `https://hilmimokhsen.my.id` (atau sebaliknya, asal konsisten). Situs ini memakai alamat **tanpa www** di canonical, sitemap, dan data terstruktur.
+- [x] File berikut bisa dibuka:
   - `https://hilmimokhsen.my.id/robots.txt`
   - `https://hilmimokhsen.my.id/sitemap.xml`
   - `https://hilmimokhsen.my.id/llms.txt`
@@ -194,6 +189,7 @@ Catat apakah hilmimokhsen.my.id dikutip sebagai sumber. Jika ada jawaban yang sa
 | `robots.txt` | Mengizinkan mesin pencari & bot AI, menunjuk ke sitemap |
 | `sitemap.xml` | Daftar halaman & foto untuk Google/Bing |
 | `a8c13b5b11f978badb6f3cb9f1b7ed9c.txt` | Kunci IndexNow (Bing) — jangan dihapus |
+| `CNAME` | Custom domain GitHub Pages (hilmimokhsen.my.id) — jangan dihapus |
 | `og-image.jpg` | Gambar pratinjau saat link dibagikan |
 | `assets/` | Foto (WebP + JPG) |
 | `favicon.svg`, `apple-touch-icon.png`, `icon-512.png`, `site.webmanifest` | Ikon & manifest |
