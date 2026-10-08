@@ -43,6 +43,8 @@ Setiap push ke branch `main` otomatis memperbarui website.
 
 ## 1. Google Search Console
 
+> **Status (8 Oktober 2026): ✅ 1a–1c selesai.** Properti *Domain* `hilmimokhsen.my.id` terverifikasi lewat record TXT `google-site-verification=UhL6bpU1CAJbbJTpAGfR1rpBRbyWEaGh0FPXaxyKn9w` di DNS Sumopod (**jangan dihapus**, kalau dihapus verifikasi hilang). Sitemap sudah dikirim dan *Request Indexing* halaman utama sudah masuk antrean prioritas. Status sitemap "Couldn't fetch" di awal itu normal untuk properti baru, karena Google mengambilnya ulang dalam beberapa jam sampai hari. Cek langkah 1d mulai 11 Oktober 2026.
+
 ### 1a. Tambahkan properti
 1. Buka <https://search.google.com/search-console> dan login dengan akun Google milik Hilmi.
 2. Klik **Tambahkan properti** → pilih **Domain** → isi `hilmimokhsen.my.id`.
@@ -56,10 +58,10 @@ Setiap push ke branch `main` otomatis memperbarui website.
 > **Alternatif tanpa akses DNS:** pilih tipe **Awalan URL** → `https://hilmimokhsen.my.id/` → metode **Tag HTML**. Salin tag `<meta name="google-site-verification" ...>` lalu tempel di `index.html` tepat di bawah baris `<meta name="robots" ...>`. Commit, push, tunggu situs ter-update, lalu klik Verifikasi.
 
 ### 1b. Kirim sitemap
-- [ ] Menu **Peta Situs** → isi `sitemap.xml` → **Kirim**. Status harus "Berhasil".
+- [x] Menu **Peta Situs** → isi `sitemap.xml` → **Kirim**. Status harus "Berhasil".
 
 ### 1c. Minta Google mengindeks halaman utama
-- [ ] Menu **Inspeksi URL** → tempel `https://hilmimokhsen.my.id/` → **Minta Pengindeksan**.
+- [x] Menu **Inspeksi URL** → tempel `https://hilmimokhsen.my.id/` → **Minta Pengindeksan**.
 - Ulangi langkah ini setiap kali ada perubahan isi yang penting.
 
 ### 1d. Cek setelah 3–7 hari
