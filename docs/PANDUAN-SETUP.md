@@ -73,12 +73,14 @@ Setiap push ke branch `main` otomatis memperbarui website.
 
 ## 2. Bing Webmaster Tools (penting untuk ChatGPT & Copilot)
 
+> **Status (8 Oktober 2026): ✅ selesai.** Login Bing Webmaster memakai akun Google yang sama, lalu situs **hilmimokhsen.my.id saja** diimpor dari Search Console (situs lain di akun tersebut sengaja tidak diimpor). Izin yang diberikan ke Bing hanya *View Search Console data* (baca saja). Sitemap `https://hilmimokhsen.my.id/sitemap.xml` sudah dikirim manual di Bing (status *Processing*). Bing biasanya memproses dalam 1–3 hari.
+
 ChatGPT Search dan Microsoft Copilot mengambil hasil pencarian dari indeks Bing, jadi langkah ini sama pentingnya dengan Google.
 
 1. Buka <https://www.bing.com/webmasters> → login (bisa pakai akun Google).
 2. Pilih **Import from Google Search Console**. Situs dan sitemap otomatis ikut, tanpa perlu verifikasi ulang.
    - Jika ingin manual: **Add site** → `https://hilmimokhsen.my.id/` → verifikasi dengan DNS (CNAME) atau meta tag → **Sitemaps** → kirim `https://hilmimokhsen.my.id/sitemap.xml`.
-3. [ ] **URL Submission** → kirim `https://hilmimokhsen.my.id/`.
+3. [x] **URL Submission** → kirim `https://hilmimokhsen.my.id/`. *(Sudah lewat IndexNow, langkah 2a.)*
 
 ### 2a. IndexNow (memberi tahu Bing secara instan setiap ada update)
 Repo ini sudah berisi file kunci IndexNow: `a8c13b5b11f978badb6f3cb9f1b7ed9c.txt` (di folder utama). Jangan dihapus atau diganti namanya.
