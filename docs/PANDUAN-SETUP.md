@@ -1,6 +1,6 @@
-# Panduan Setup Google Search Console, Bing & AI — hilmimokhsen.com
+# Panduan Setup Google Search Console, Bing & AI — hilmimokhsen.my.id
 
-Panduan ini berisi langkah setelah website online agar **hilmimokhsen.com** cepat terindeks Google, Bing, dan AI (ChatGPT, Gemini, Perplexity, Claude). Kerjakan berurutan dan centang yang sudah selesai.
+Panduan ini berisi langkah setelah website online agar **hilmimokhsen.my.id** cepat terindeks Google, Bing, dan AI (ChatGPT, Gemini, Perplexity, Claude). Kerjakan berurutan dan centang yang sudah selesai.
 
 > **Perkiraan waktu:** halaman biasanya terindeks dalam 2 hari–2 minggu setelah sitemap dikirim. Peringkat untuk kata kunci seperti "content creator NTT" butuh beberapa minggu sampai bulan, tergantung tautan dari luar (bio sosial media, media, Undana).
 
@@ -8,27 +8,39 @@ Panduan ini berisi langkah setelah website online agar **hilmimokhsen.com** cepa
 
 ## 0. Pastikan website sudah online
 
-> **Status saat ini (7 Oktober 2026):** website sudah online di GitHub Pages: <https://ihsanmokhsen.github.io/hilmimokhsen.com/>. Domain **hilmimokhsen.com belum terdaftar**, jadi beli dulu domainnya (Niagahoster, Domainesia, Rumahweb, Cloudflare Registrar, dll.), lalu pasang ke GitHub Pages:
-> 1. Di pengelola DNS domain, tambahkan 4 record `A` untuk `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, dan 1 record `CNAME` untuk `www` → `ihsanmokhsen.github.io`.
-> 2. Repo *Settings → Pages → Custom domain* → isi `hilmimokhsen.com` → *Save* → tunggu cek DNS hijau → centang *Enforce HTTPS*.
-> 3. Baru setelah itu lanjut ke langkah 1 (Search Console). **Jangan daftarkan alamat github.io ke Search Console.** Halaman ini sudah menunjuk `hilmimokhsen.com` sebagai alamat resmi (canonical).
+> **Status saat ini (8 Oktober 2026):** website online di GitHub Pages: <https://ihsanmokhsen.github.io/hilmimokhsen.com/>. Domain **hilmimokhsen.my.id** sudah dibeli (registrar PT Exabytes Network Indonesia, name server `ns1.sumopod.com` / `ns2.sumopod.com`) tapi DNS-nya belum diisi. Pasang ke GitHub Pages:
+>
+> 1. **Isi DNS di panel Sumopod** (menu DNS / Zone untuk `hilmimokhsen.my.id`):
+>
+>    | Type | Name / Host | Value / Target | TTL |
+>    |---|---|---|---|
+>    | A | `@` | `185.199.108.153` | 3600 |
+>    | A | `@` | `185.199.109.153` | 3600 |
+>    | A | `@` | `185.199.110.153` | 3600 |
+>    | A | `@` | `185.199.111.153` | 3600 |
+>    | CNAME | `www` | `ihsanmokhsen.github.io` | 3600 |
+>
+>    Hapus record `A`/`CNAME` bawaan lain untuk `@` dan `www` (misalnya parkir domain) supaya tidak bentrok. Domain `.my.id` yang baru dibeli bisa butuh beberapa jam sampai 1×24 jam sampai DNS-nya aktif.
+> 2. **Cek DNS sudah aktif:** `dig +short hilmimokhsen.my.id` harus menampilkan keempat IP `185.199.x.153` di atas.
+> 3. **Pasang custom domain di GitHub:** repo *Settings → Pages → Custom domain* → isi `hilmimokhsen.my.id` → *Save* (ini membuat file `CNAME` di repo) → tunggu cek DNS hijau → centang *Enforce HTTPS* (sertifikat bisa butuh hingga ±1 jam). Jangan lakukan langkah ini sebelum langkah 2 berhasil: begitu custom domain dipasang, alamat github.io langsung dialihkan ke domain, sehingga situs tidak bisa dibuka selama DNS belum aktif.
+> 4. Baru setelah itu lanjut ke langkah 1 (Search Console). **Jangan daftarkan alamat github.io ke Search Console.** Semua canonical, sitemap, dan data terstruktur sudah menunjuk `https://hilmimokhsen.my.id/`.
 
-- [ ] Website dapat dibuka di `https://hilmimokhsen.com` (pakai **https**, bukan http).
-- [ ] `https://www.hilmimokhsen.com` otomatis dialihkan ke `https://hilmimokhsen.com` (atau sebaliknya, asal konsisten). Situs ini memakai alamat **tanpa www** di canonical, sitemap, dan data terstruktur.
+- [ ] Website dapat dibuka di `https://hilmimokhsen.my.id` (pakai **https**, bukan http).
+- [ ] `https://www.hilmimokhsen.my.id` otomatis dialihkan ke `https://hilmimokhsen.my.id` (atau sebaliknya, asal konsisten). Situs ini memakai alamat **tanpa www** di canonical, sitemap, dan data terstruktur.
 - [ ] File berikut bisa dibuka:
-  - `https://hilmimokhsen.com/robots.txt`
-  - `https://hilmimokhsen.com/sitemap.xml`
-  - `https://hilmimokhsen.com/llms.txt`
-  - `https://hilmimokhsen.com/og-image.jpg`
+  - `https://hilmimokhsen.my.id/robots.txt`
+  - `https://hilmimokhsen.my.id/sitemap.xml`
+  - `https://hilmimokhsen.my.id/llms.txt`
+  - `https://hilmimokhsen.my.id/og-image.jpg`
 
 **Pilihan hosting dari repo ini (gratis):**
 
 | Hosting | Cara singkat |
 |---|---|
-| Cloudflare Pages | *Workers & Pages → Create → Pages → Connect to Git* → pilih repo ini → Build command dikosongkan, output directory `/` → tambahkan custom domain `hilmimokhsen.com`. |
+| Cloudflare Pages | *Workers & Pages → Create → Pages → Connect to Git* → pilih repo ini → Build command dikosongkan, output directory `/` → tambahkan custom domain `hilmimokhsen.my.id`. |
 | Netlify | *Add new site → Import from Git* → pilih repo → tanpa build command, publish directory `/` → *Domain management* → tambahkan domain. |
 | Vercel | *Add New → Project* → import repo → Framework preset "Other" → tambahkan domain. |
-| GitHub Pages | Repo *Settings → Pages* → Source: branch `main`, folder `/ (root)` → isi Custom domain `hilmimokhsen.com` → centang *Enforce HTTPS*. |
+| GitHub Pages | Repo *Settings → Pages* → Source: branch `main`, folder `/ (root)` → isi Custom domain `hilmimokhsen.my.id` → centang *Enforce HTTPS*. |
 
 Setiap push ke branch `main` otomatis memperbarui website.
 
@@ -38,7 +50,7 @@ Setiap push ke branch `main` otomatis memperbarui website.
 
 ### 1a. Tambahkan properti
 1. Buka <https://search.google.com/search-console> dan login dengan akun Google milik Hilmi.
-2. Klik **Tambahkan properti** → pilih **Domain** → isi `hilmimokhsen.com`.
+2. Klik **Tambahkan properti** → pilih **Domain** → isi `hilmimokhsen.my.id`.
 3. Google memberi kode **TXT** (contoh: `google-site-verification=xxxx`).
 4. Masuk ke pengelola DNS domain (tempat domain dibeli, atau Cloudflare jika DNS dikelola di sana) → tambahkan record:
    - Type: `TXT`
@@ -46,17 +58,17 @@ Setiap push ke branch `main` otomatis memperbarui website.
    - Value: kode dari Google
 5. Kembali ke Search Console → klik **Verifikasi**. Jika gagal, tunggu 10–60 menit lalu coba lagi.
 
-> **Alternatif tanpa akses DNS:** pilih tipe **Awalan URL** → `https://hilmimokhsen.com/` → metode **Tag HTML**. Salin tag `<meta name="google-site-verification" ...>` lalu tempel di `index.html` tepat di bawah baris `<meta name="robots" ...>`. Commit, push, tunggu situs ter-update, lalu klik Verifikasi.
+> **Alternatif tanpa akses DNS:** pilih tipe **Awalan URL** → `https://hilmimokhsen.my.id/` → metode **Tag HTML**. Salin tag `<meta name="google-site-verification" ...>` lalu tempel di `index.html` tepat di bawah baris `<meta name="robots" ...>`. Commit, push, tunggu situs ter-update, lalu klik Verifikasi.
 
 ### 1b. Kirim sitemap
 - [ ] Menu **Peta Situs** → isi `sitemap.xml` → **Kirim**. Status harus "Berhasil".
 
 ### 1c. Minta Google mengindeks halaman utama
-- [ ] Menu **Inspeksi URL** → tempel `https://hilmimokhsen.com/` → **Minta Pengindeksan**.
+- [ ] Menu **Inspeksi URL** → tempel `https://hilmimokhsen.my.id/` → **Minta Pengindeksan**.
 - Ulangi langkah ini setiap kali ada perubahan isi yang penting.
 
 ### 1d. Cek setelah 3–7 hari
-- [ ] **Halaman** → `https://hilmimokhsen.com/` berstatus *Diindeks*.
+- [ ] **Halaman** → `https://hilmimokhsen.my.id/` berstatus *Diindeks*.
 - [ ] **Peningkatan / Enhancements** → muncul **Profile page** tanpa error (dari data terstruktur ProfilePage + Person).
 - [ ] **Performa** → pantau kata kunci: `hilmi mokhsen`, `hilmiyatillah mokhsen`, `content creator ntt`, `influencer kupang`, `influencer ntt`, `pembicara public speaking kupang`.
 
@@ -68,8 +80,8 @@ ChatGPT Search dan Microsoft Copilot mengambil hasil pencarian dari indeks Bing,
 
 1. Buka <https://www.bing.com/webmasters> → login (bisa pakai akun Google).
 2. Pilih **Import from Google Search Console**. Situs dan sitemap otomatis ikut, tanpa perlu verifikasi ulang.
-   - Jika ingin manual: **Add site** → `https://hilmimokhsen.com/` → verifikasi dengan DNS (CNAME) atau meta tag → **Sitemaps** → kirim `https://hilmimokhsen.com/sitemap.xml`.
-3. [ ] **URL Submission** → kirim `https://hilmimokhsen.com/`.
+   - Jika ingin manual: **Add site** → `https://hilmimokhsen.my.id/` → verifikasi dengan DNS (CNAME) atau meta tag → **Sitemaps** → kirim `https://hilmimokhsen.my.id/sitemap.xml`.
+3. [ ] **URL Submission** → kirim `https://hilmimokhsen.my.id/`.
 
 ### 2a. IndexNow (memberi tahu Bing secara instan setiap ada update)
 Repo ini sudah berisi file kunci IndexNow: `a8c13b5b11f978badb6f3cb9f1b7ed9c.txt` (di folder utama). Jangan dihapus atau diganti namanya.
@@ -77,7 +89,7 @@ Repo ini sudah berisi file kunci IndexNow: `a8c13b5b11f978badb6f3cb9f1b7ed9c.txt
 Setelah website online, dan **setiap kali website diperbarui**, jalankan:
 
 ```bash
-curl "https://api.indexnow.org/indexnow?url=https://hilmimokhsen.com/&key=a8c13b5b11f978badb6f3cb9f1b7ed9c"
+curl "https://api.indexnow.org/indexnow?url=https://hilmimokhsen.my.id/&key=a8c13b5b11f978badb6f3cb9f1b7ed9c"
 ```
 
 Respons `200` atau `202` berarti berhasil. IndexNow juga dipakai Yandex, Seznam, dan Naver.
@@ -86,7 +98,7 @@ Respons `200` atau `202` berarti berhasil. IndexNow juga dipakai Yandex, Seznam,
 
 ## 3. Uji data terstruktur & tampilan link
 
-- [ ] **Rich Results Test**: <https://search.google.com/test/rich-results> → masukkan `https://hilmimokhsen.com/` → pastikan *Profile page* terdeteksi tanpa error.
+- [ ] **Rich Results Test**: <https://search.google.com/test/rich-results> → masukkan `https://hilmimokhsen.my.id/` → pastikan *Profile page* terdeteksi tanpa error.
 - [ ] **Schema Markup Validator**: <https://validator.schema.org/> → masukkan URL → harus ada `Person`, `ProfilePage`, `WebSite`, `EducationEvent` ×2, `Event`, `ScholarlyArticle` ×2, `Book`, tanpa error.
 - [ ] **PageSpeed Insights**: <https://pagespeed.web.dev/> → cek versi *Mobile*; target skor Performance ≥ 90.
 - [ ] **Pratinjau link WhatsApp/Facebook**: <https://developers.facebook.com/tools/debug/> → masukkan URL → klik *Scrape Again* agar gambar `og-image.jpg` muncul saat link dibagikan.
@@ -97,12 +109,12 @@ Respons `200` atau `202` berarti berhasil. IndexNow juga dipakai Yandex, Seznam,
 
 AI dan Google memastikan situs ini resmi milik Hilmi dengan melihat tautan dua arah: website → akun, dan akun → website.
 
-- [ ] Instagram @hilmimokhsen → *Edit profil → Tautan* → tambahkan `https://hilmimokhsen.com`
+- [ ] Instagram @hilmimokhsen → *Edit profil → Tautan* → tambahkan `https://hilmimokhsen.my.id`
 - [ ] TikTok @hilmimokhsen → *Edit profil → Situs web*
 - [ ] YouTube → *Kustomisasi channel → Info dasar → Link*
 - [ ] Threads @hilmimokhsen → *Edit profil → Link*
 - [ ] X @HilmiMokhsen → *Edit profile → Website*
-- [ ] Jika link bio memakai tr.ee/Linktree, taruh hilmimokhsen.com di urutan **paling atas**.
+- [ ] Jika link bio memakai tr.ee/Linktree, taruh hilmimokhsen.my.id di urutan **paling atas**.
 
 ---
 
@@ -110,7 +122,7 @@ AI dan Google memastikan situs ini resmi milik Hilmi dengan melihat tautan dua a
 
 Klaim "dosen Undana" saat ini belum tercantum di sumber publik mana pun. Profil resmi di domain `undana.ac.id` adalah bukti paling kuat bagi Google dan AI.
 
-- [ ] Minta admin Prodi/Fakultas membuat atau memperbarui halaman profil dosen atas nama **Hilmiyatillah Mokhsen, S.Sos., M.I.Kom.**, dengan tautan ke `https://hilmimokhsen.com`.
+- [ ] Minta admin Prodi/Fakultas membuat atau memperbarui halaman profil dosen atas nama **Hilmiyatillah Mokhsen, S.Sos., M.I.Kom.**, dengan tautan ke `https://hilmimokhsen.my.id`.
 - [ ] Jika ada, daftarkan juga profil **SINTA** dan **Google Scholar**. Masukkan jurnal IJIS 2025 (DOI `10.55927/ijis.v4i11.668`).
 - [ ] Setelah halaman profil tersebut ada, kirim URL-nya ke developer agar ditambahkan ke `sameAs` di data terstruktur `index.html` dan ke `llms.txt`.
 
@@ -132,7 +144,7 @@ Wikidata dipakai Google Knowledge Graph dan banyak model AI sebagai sumber fakta
 | educated at (P69) | Syarif Hidayatullah State Islamic University Jakarta; Nusa Cendana University |
 | employer (P108) | Nusa Cendana University |
 | residence (P551) | Kupang |
-| official website (P856) | https://hilmimokhsen.com |
+| official website (P856) | https://hilmimokhsen.my.id |
 | Instagram username (P2003) | hilmimokhsen |
 | TikTok username (P7085) | hilmimokhsen |
 | X username (P2002) | HilmiMokhsen |
@@ -169,7 +181,7 @@ Tanyakan ke ChatGPT (mode Search), Perplexity, Gemini, dan Claude:
 - "Rekomendasi content creator atau influencer NTT dari Kupang untuk endorse"
 - "Pembicara public speaking di Kupang"
 
-Catat apakah hilmimokhsen.com dikutip sebagai sumber. Jika ada jawaban yang salah, perbaiki atau perjelas faktanya di `index.html` dan `llms.txt`, lalu ulangi langkah perawatan di atas.
+Catat apakah hilmimokhsen.my.id dikutip sebagai sumber. Jika ada jawaban yang salah, perbaiki atau perjelas faktanya di `index.html` dan `llms.txt`, lalu ulangi langkah perawatan di atas.
 
 ---
 

@@ -1,4 +1,4 @@
-# hilmimokhsen.com — terbuka untuk mesin pencari & AI agent
+# hilmimokhsen.my.id — terbuka untuk mesin pencari & AI agent
 User-agent: *
 Allow: /
 
@@ -33,4 +33,4 @@ User-agent: MistralAI-User
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://hilmimokhsen.com/sitemap.xml
+Sitemap: https://hilmimokhsen.my.id/sitemap.xml
