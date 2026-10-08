@@ -89,12 +89,15 @@ curl "https://api.indexnow.org/indexnow?url=https://hilmimokhsen.my.id/&key=a8c1
 
 Respons `200` atau `202` berarti berhasil. IndexNow juga dipakai Yandex, Seznam, dan Naver.
 
+- [x] **8 Oktober 2026:** halaman utama dan `llms.txt` sudah dikirim ke IndexNow (respons `202` dari api.indexnow.org, `200` dari Bing).
+
 ---
 
 ## 3. Uji data terstruktur & tampilan link
 
 - [ ] **Rich Results Test**: <https://search.google.com/test/rich-results> → masukkan `https://hilmimokhsen.my.id/` → pastikan *Profile page* terdeteksi tanpa error.
-- [ ] **Schema Markup Validator**: <https://validator.schema.org/> → masukkan URL → harus ada `Person`, `ProfilePage`, `WebSite`, `EducationEvent` ×2, `Event`, `ScholarlyArticle` ×2, `Book`, tanpa error.
+- [x] **Schema Markup Validator**: <https://validator.schema.org/> → masukkan URL → harus ada `Person`, `ProfilePage`, `WebSite`, `EducationEvent` ×2, `Event`, `ScholarlyArticle` ×2, `Book`, tanpa error. *(8 Oktober 2026: 0 error, 0 peringatan.)*
+- [x] **Akses crawler AI** *(8 Oktober 2026)*: Googlebot, Bingbot, GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, dan CCBot semuanya mendapat status `200` dan membaca seluruh isi halaman (776 kata) tanpa perlu JavaScript.
 - [ ] **PageSpeed Insights**: <https://pagespeed.web.dev/> → cek versi *Mobile*; target skor Performance ≥ 90.
 - [ ] **Pratinjau link WhatsApp/Facebook**: <https://developers.facebook.com/tools/debug/> → masukkan URL → klik *Scrape Again* agar gambar `og-image.jpg` muncul saat link dibagikan.
 
@@ -127,22 +130,33 @@ Klaim "dosen Undana" saat ini belum tercantum di sumber publik mana pun. Profil 
 
 Wikidata dipakai Google Knowledge Graph dan banyak model AI sebagai sumber fakta. Entri harus didukung referensi yang dapat diverifikasi, dan sumber yang sudah ada cukup memadai (jurnal MUKASI 2026, berita ANTARA/Undana/DelikNTT, detikcom).
 
-1. Buat akun di <https://www.wikidata.org> → **Create a new Item**.
-2. Label: `Hilmi Mokhsen` · Description: `Indonesian content creator and lecturer from Kupang` · Also known as: `Hilmiyatillah Mokhsen`.
-3. Tambahkan pernyataan, masing-masing dengan referensi URL:
+Datanya sudah disiapkan lengkap dengan referensi di [`docs/wikidata-quickstatements.txt`](wikidata-quickstatements.txt). Belum ada entri Wikidata untuk Hilmi (sudah dicek 8 Oktober 2026), jadi berkas ini membuat entri baru.
 
-| Properti | Isi |
-|---|---|
-| instance of (P31) | human |
-| given name (P735) / family name (P734) | Hilmi / Mokhsen |
-| occupation (P106) | influencer, content creator, lecturer, master of ceremonies |
-| educated at (P69) | Syarif Hidayatullah State Islamic University Jakarta; Nusa Cendana University |
-| employer (P108) | Nusa Cendana University |
-| residence (P551) | Kupang |
-| official website (P856) | https://hilmimokhsen.my.id |
-| Instagram username (P2003) | hilmimokhsen |
-| TikTok username (P7085) | hilmimokhsen |
-| X username (P2002) | HilmiMokhsen |
+1. Buat akun di <https://www.wikidata.org> (*Create account*). QuickStatements mewajibkan akun berumur ≥ 4 hari dengan ≥ 50 suntingan; jika belum memenuhi, pakai cara manual di langkah 4.
+2. Buka <https://quickstatements.toolforge.org> → *Log in* (memakai akun Wikidata) → *New batch*.
+3. Salin seluruh isi `docs/wikidata-quickstatements.txt` → tempel → *Import V1 commands* → periksa daftarnya → *Run*.
+4. **Cara manual:** di Wikidata klik *Create a new Item*, isi label/deskripsi/alias di bawah, lalu tambahkan setiap pernyataan lewat *+ add statement* beserta *reference URL*-nya:
+
+| Properti | Isi (ID Wikidata) | Referensi (reference URL, P854) |
+|---|---|---|
+| Label / Description (id) | Hilmi Mokhsen · kreator konten, pembicara, dan dosen asal Kupang, Indonesia | — |
+| Label / Description (en) | Hilmi Mokhsen · Indonesian content creator, speaker and lecturer from Kupang | — |
+| Also known as | Hilmiyatillah Mokhsen · hilmimokhsen | — |
+| instance of (P31) | human (Q5) | — |
+| occupation (P106) | influencer (Q2906862) | doi.org/10.54259/mukasi.v5i1.6299 |
+| occupation (P106) | content creator (Q109459317) | berita undana.ac.id (Entrepreneurship Skill, 2026) |
+| occupation (P106) | master of ceremonies (Q497240) | berita delikntt.com (Lembata, 2025) |
+| occupation (P106) | university teacher (Q1622272) | hilmimokhsen.my.id |
+| employer (P108) | University of Nusa Cendana (Q7896000) | hilmimokhsen.my.id |
+| educated at (P69) | Jakarta State Islamic University (Q12523349), kualifikasi *academic degree* (P512) = bachelor's degree (Q163727) | repository.uinjkt.ac.id (skripsi 2018) |
+| educated at (P69) | University of Nusa Cendana (Q7896000), kualifikasi *academic degree* (P512) = master's degree (Q183816) | kupang.antaranews.com (M.I.Kom., 2026) |
+| residence (P551) | Kupang (Q14155) | doi.org/10.54259/mukasi.v5i1.6299 |
+| official website (P856) | https://hilmimokhsen.my.id/ | — |
+| Instagram username (P2003) | hilmimokhsen | — |
+| TikTok username (P7085) | hilmimokhsen | — |
+| X username (P2002) | HilmiMokhsen | — |
+
+5. Setelah entri jadi (misalnya `Q1234567`), kirim ID-nya ke developer agar ditambahkan ke `sameAs` di data terstruktur `index.html` dan ke `llms.txt`. Ini menautkan website dan Wikidata dua arah.
 
 > Hanya masukkan fakta yang ada sumbernya. Entri tanpa referensi bisa dihapus moderator.
 
@@ -189,6 +203,7 @@ Catat apakah hilmimokhsen.my.id dikutip sebagai sumber. Jika ada jawaban yang sa
 | `robots.txt` | Mengizinkan mesin pencari & bot AI, menunjuk ke sitemap |
 | `sitemap.xml` | Daftar halaman & foto untuk Google/Bing |
 | `a8c13b5b11f978badb6f3cb9f1b7ed9c.txt` | Kunci IndexNow (Bing) — jangan dihapus |
+| `docs/wikidata-quickstatements.txt` | Data siap-tempel untuk membuat entri Wikidata Hilmi |
 | `CNAME` | Custom domain GitHub Pages (hilmimokhsen.my.id) — jangan dihapus |
 | `og-image.jpg` | Gambar pratinjau saat link dibagikan |
 | `assets/` | Foto (WebP + JPG) |
